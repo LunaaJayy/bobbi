@@ -100,6 +100,35 @@ h1 {
     background: transparent;
 }
 
+.denkwolkje {
+    position: fixed;
+    width: 267px;
+    left: 656px;
+    top: 225px;
+}
+
+.denk-tekst {
+    position: fixed;
+    width: 200px;
+    left: 701px;
+    top: 296px;
+}
+
+.bobbi-zit {
+    position: fixed;
+    width: 221px;
+    left: 1056px;
+    top: 597px;
+}
+
+.win-hartje {
+    position: fixed;
+    width: 74px;
+    height: 68px;
+    left: 1220px;
+    top: 500px;
+}
+
 /* WOONKAMER */
 
 .bobbi-zij-kijken {

@@ -4,6 +4,14 @@ const pijlWnaarT = document.querySelector(".pijltje-links-woonkamer");
 const pijlWnaarK = document.querySelector(".pijltje-rechts-woonkamer");
 const pijlKnaarW = document.querySelector(".pijltje-links-keuken");
 
+//winnen
+const zakVoer = document.querySelector(".zakvoer")
+const denkWolk = document.querySelector(".denkwolkje")
+const denkTekst= document.querySelector(".denk-tekst")
+const bobbiZij = document.querySelector(".bobbi-zij")
+const bobbiZit = document.querySelector(".bobbi-zit")
+const hartjeWin = document.querySelector(".win-hartje")
+
 //botjes
 const botBoom = document.querySelector(".bot-boom");
 const botBank = document.querySelector(".bot-bank");
@@ -11,6 +19,7 @@ const botKeuken = document.querySelector(".bot-keuken");
 const botDeur = document.querySelector(".bot-deur");
 const botVrouw = document.querySelector(".vrouw");
 
+//progressbar
 let percentage = 0
 const nieuwProcent = percentage + "%" // moet een percentage zijn omdat hij anders niet in de width goed kan worden gezet
 const hetLaden = document.querySelector(".progress-bar")
@@ -21,6 +30,8 @@ let woonkamerDiv = document.querySelector(".woonkamer");
 let keukenDiv = document.querySelector(".keuken");
 let achtergrond = document.body;
 let progressBar = document.querySelector(".progressie")
+
+
 
 // JAVASCRIPT OM NAAR VERSCHILLENDE KAMERS TE GAAN
 // starten van spel -> tuin wordt laten zien
@@ -109,3 +120,32 @@ function progresStart () {
     hetLaden.style.width = nieuwProcent
 }
 
+//HOE TE WINNEN
+
+function wolkjeWeg () {
+    denkWolk.classList.add("hidden")
+    denkTekst.classList.add("hidden")
+}
+
+function nogNiet () {
+    denkWolk.classList.remove("hidden")
+    denkTekst.classList.remove("hidden")
+    setTimeout(wolkjeWeg, 3000 )
+}
+
+function gewonnen () {
+    bobbiZij.classList.add("hidden")
+    bobbiZit.classList.remove("hidden")
+    hartjeWin.classList.remove("hidden")
+}
+
+zakVoer.addEventListener('click', winnen)
+
+function winnen () {
+    if (percentage == 100) {
+        gewonnen()
+    }
+    else {
+        nogNiet()
+    }
+}
