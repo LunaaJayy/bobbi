@@ -1,0 +1,2 @@
+Kun je img leeg laten en vervolgens een src aangeven met javascript?
+het kan het beste met class hidden (dus .hidden) en dan display:none
