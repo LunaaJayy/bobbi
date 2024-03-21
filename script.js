@@ -11,6 +11,7 @@ const denkTekst= document.querySelector(".denk-tekst")
 const bobbiZij = document.querySelector(".bobbi-zij")
 const bobbiZit = document.querySelector(".bobbi-zit")
 const hartjeWin = document.querySelector(".win-hartje")
+const bobbiLigDood = document.querySelector(".bobbi-ligdood")
 
 //botjes
 const botBoom = document.querySelector(".bot-boom");
@@ -31,6 +32,11 @@ let keukenDiv = document.querySelector(".keuken");
 let achtergrond = document.body;
 let progressBar = document.querySelector(".progressie")
 
+//geluid
+const eten = new Audio('sounds/eten.mp3')
+const juichen = new Audio('sounds/juichen.mp3')
+const hey = new Audio('sounds/vrouw-hey.mp3')
+//audio leren afspelen via gomakethings.com
 
 
 // JAVASCRIPT OM NAAR VERSCHILLENDE KAMERS TE GAAN
@@ -42,14 +48,23 @@ function startSpel () {
     achtergrond.style.backgroundImage = "url('fotos-en-bron/kamer-fotos/tuin.png')"; //ken ik dankzij https://www.w3schools.com/jsref/prop_style_backgroundimage.asp
 }
 
-// van tuin achtergrond naar woonkamer
+// van tuin naar woonkamer
 function tuinNaarW () {
     tuinDiv.classList.add("hidden");
     woonkamerDiv.classList.remove("hidden");
     achtergrond.style.backgroundImage = "url('fotos-en-bron/kamer-fotos/woonkamer.png')";
+    setTimeout(hint, 10000);
 }
 
-// van woonkamer terug naar tuin
+//hint
+function hint () {
+    if (!botVrouw.classList.contains("hidden")) {
+        // via https://www.tutorialrepublic.com/faq/how-to-check-if-an-element-contains-a-class-in-javascript
+        hey.play()
+    }
+}
+
+// van woonkamer naar tuin
 function woonNaarT () {
     woonkamerDiv.classList.add("hidden");
     tuinDiv.classList.remove("hidden");
@@ -63,11 +78,13 @@ function woonNaarK () {
     achtergrond.style.backgroundImage = "url('fotos-en-bron/kamer-fotos/keuken.png')";
 }
 
-// van keuken terug naar woonkamer
+// van keuken naar woonkamer
+
 function keukenNaarW () {
     keukenDiv.classList.add("hidden");
     woonkamerDiv.classList.remove("hidden");
     achtergrond.style.backgroundImage = "url('fotos-en-bron/kamer-fotos/woonkamer.png')";
+    setTimeout(hint, 10000);
 }
 
 startKnop.addEventListener('click', startSpel)
@@ -82,26 +99,31 @@ pijlKnaarW.addEventListener('click', keukenNaarW)
 
 function pakBotBoom () {
     botBoom.classList.add("hidden");
+    eten.play();
     progresStart ();
 }
 
 function pakBotBank () {
     botBank.classList.add("hidden");
+    eten.play();
     progresStart ();
 }
 
 function pakBotKeuken () {
     botKeuken.classList.add("hidden");
+    eten.play();
     progresStart ();
 }
 
 function pakBotDeur () {
     botDeur.classList.add("hidden");
+    eten.play();
     progresStart ();
 }
 
 function pakBotVrouw () {
     botVrouw.classList.add("hidden");
+    eten.play();
     progresStart ();
 }
 
@@ -125,11 +147,15 @@ function progresStart () {
 function wolkjeWeg () {
     denkWolk.classList.add("hidden")
     denkTekst.classList.add("hidden")
+    bobbiLigDood.classList.add("hidden")
+    bobbiZij.classList.remove("hidden")
 }
 
 function nogNiet () {
     denkWolk.classList.remove("hidden")
     denkTekst.classList.remove("hidden")
+    bobbiLigDood.classList.remove("hidden")
+    bobbiZij.classList.add("hidden")
     setTimeout(wolkjeWeg, 3000 )
 }
 
@@ -137,6 +163,7 @@ function gewonnen () {
     bobbiZij.classList.add("hidden")
     bobbiZit.classList.remove("hidden")
     hartjeWin.classList.remove("hidden")
+    juichen.play()
 }
 
 zakVoer.addEventListener('click', winnen)

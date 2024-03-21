@@ -93,11 +93,18 @@ h1 {
 
 .zakvoer {
     position: fixed;
-    border: 3px solid #000000;
+    border: transparent;
     left: 1277px;
     top: 610px;
     padding: 67px 40px;
     background: transparent;
+}
+
+.bobbi-ligdood {
+    position: fixed;
+    width: 233px;
+    left: 410px;
+    top: 680px;
 }
 
 .denkwolkje {
@@ -145,7 +152,7 @@ h1 {
 
 .vrouw {
     position: fixed;
-    border: 3px solid #000000;
+    border: transparent;
     padding: 35px 80px;
     background: transparent;
     left: 459px;
